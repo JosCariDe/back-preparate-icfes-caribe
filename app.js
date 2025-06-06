@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import routesEstudiantes from './routes/estudiante.js'
 import bodyParser from 'body-parser';
+import dbClient from './config/dbClient.js';
 
 const app = express();
 
@@ -16,3 +17,8 @@ try {
 } catch(e) {
     console.log(e);
 }
+
+process.on('SIGINT', async() => {
+    dbClient.cerracConexion();
+    process.exit(0);
+});

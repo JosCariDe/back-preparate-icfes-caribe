@@ -1,11 +1,23 @@
 import 'dotenv/config';
 import { MongoClient } from "mongodb";
+import mongoose from 'mongoose';
 
 class dbClient {
+
     constructor() {
-        const queryString = `mongodb+srv://${process.env.USER_DB}:${process.env.PASS_DB}@${process.env.SERVER_DB}/?retryWrites=true&w=majority&appName=caribeICFES`;
-        this.client = new MongoClient(queryString);
-        this.conectarBD();
+        this.conectarBaseDatos();
+    }
+
+    async conectarBaseDatos() {
+        const queryString = `mongodb+srv://${process.env.USER_DB}:${process.env.PASS_DB}@${process.env.SERVER_DB}/caribeICFES?retryWrites=true&w=majority`;
+        //this.client = new MongoClient(queryString);
+        try {
+            await mongoose.connect(queryString);
+            console.log('Conectados al servidor de BD en Mongo ATLAS');
+        }catch(e) {
+            console.log('Error al conectar a la BD con mongosee');
+        };
+        
     }
 
     async conectarBD() {
@@ -16,6 +28,15 @@ class dbClient {
 
         }catch(e) {
             console.log(e);
+        }
+    }
+
+    async cerracConexion() {
+        try {
+            await mongoose.disconnect();
+            console.log('Desconectado de la Base de datos');
+        }catch (e) {
+            console.log('Error al cerrar la conexion');
         }
     }
 }

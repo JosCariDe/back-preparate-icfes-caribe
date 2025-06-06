@@ -8,10 +8,11 @@ class estudianteController {
 
     async create(req, res) {
         try {
-            const data = estudiantesModel.create(req.body);
-            res.status(201).json(data);
+            const data = await estudiantesModel.create(req.body);
+            res.status(201).json({message: 'Estudiante Creado Exitosamente', data: data});
         }catch (e) {
-            res.status(500).send(e);
+            console.log('Error al crear estudiante: ', e);
+            res.status(500).send({message:'Errir interno Del servidor al crear estudiante', error: e});
         }
     }
     
