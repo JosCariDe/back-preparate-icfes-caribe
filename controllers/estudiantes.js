@@ -28,9 +28,14 @@ class estudianteController {
 
     async delete(req, res) {
         try {
-
+            const data = await estudiantesModel.delete(req.body);
+            res.status(201).json({
+                message: 'Estudiante Eliminado Exitosamente', 
+                data: data  
+            });
         }catch (e) {
-            console.log('Error en ' + e);
+            console.log('Error al Elimianr estudiante: ', e);
+            res.status(500).send({message:'Error interno Del servidor al Eliminar estudiante', error: e});
         }
     }
 
