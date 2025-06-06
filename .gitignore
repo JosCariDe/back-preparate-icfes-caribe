@@ -1,0 +1,12 @@
+# Node.js
+node_modules/
+tmp/
+*.tmp
+*.cache
+*.log
+# Visual Studio Code
+.vscode/settings.json
+# Otros
+.idea/
+build/
+dist/
