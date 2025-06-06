@@ -1,5 +1,5 @@
 
-import Estudiante from '../schemas/estudiantes.js'; // Import the Mongoose model
+import Estudiante from '../schemas/estudiantes.js'; 
 
 class estudiantesModel {
     async create(estudianteData) {
@@ -8,7 +8,7 @@ class estudiantesModel {
             return nuevoEstudiante;
         } catch (error) {
             console.error('Error creating student with Mongoose:', error);
-            throw error; // Re-throw the error for the controller to handle
+            throw error; 
         }
     }
 
@@ -34,20 +34,20 @@ class estudiantesModel {
 
     async getAll() {
         try {
-            const nuevoEstudiante = await Estudiante.find();
-            return nuevoEstudiante;
+            const estudiantes = await Estudiante.find();
+            return estudiantes;
         } catch (error) {
             console.error('Error getAll student with Mongoose:', error);
             throw error; 
         }
     }
 
-    async getAll(id) {
+    async getOne(id) {
         try {
             const nuevoEstudiante = await Estudiante.findById(id);
             return nuevoEstudiante;
         } catch (error) {
-            console.error('Error getById student with Mongoose:', error);
+            console.error('Error get student with Mongoose:', error);
             throw error; 
         }
     }

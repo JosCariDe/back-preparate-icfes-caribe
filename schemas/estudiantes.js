@@ -30,7 +30,7 @@ const estudianteSchema = new mongoose.Schema({
     municipio: { type: String, required: false },
     grado: { type: String, required: false },
     clasesICFES: [claseIcfesSchema] // Array de subdocumentos ClaseICFES
-}, {timestamps: true});
+});
 
 const Estudiante = mongoose.model('estudiantes', estudianteSchema);
 
