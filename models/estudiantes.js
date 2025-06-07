@@ -51,7 +51,16 @@ class estudiantesModel {
             throw error; 
         }
     }
-    // You can add other Mongoose-based methods here (e.g., find, findById, update, delete)
+
+    async findByCorreo(correo) {
+        try {
+            const estudiante = await Estudiante.findOne({ correo });
+            return estudiante;
+        } catch (error) {
+            console.error('Error finding student by email with Mongoose:', error);
+            throw error;
+        }
+    }
 }
 
 export default new estudiantesModel();
