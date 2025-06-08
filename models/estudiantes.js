@@ -14,7 +14,8 @@ class estudiantesModel {
 
     async update(id, estudianteData) {
         try {
-            const nuevoEstudiante = await Estudiante.findOneAndUpdate(id, estudianteData, {new: true});
+            // findOneAndUpdate espera un objeto de filtro como primer argumento
+            const nuevoEstudiante = await Estudiante.findOneAndUpdate({ _id: id }, estudianteData, {new: true});
             return nuevoEstudiante;
         } catch (error) {
             console.error('Error update student with Mongoose:', error);
@@ -24,7 +25,8 @@ class estudiantesModel {
 
     async delete(id) {
         try {
-            const nuevoEstudiante = await Estudiante.findOneAndDelete(id);
+            // findOneAndDelete espera un objeto de filtro como primer argumento
+            const nuevoEstudiante = await Estudiante.findOneAndDelete({ _id: id });
             return nuevoEstudiante;
         } catch (error) {
             console.error('Error delete student with Mongoose:', error);

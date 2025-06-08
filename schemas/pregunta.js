@@ -21,7 +21,7 @@ const preguntaSchema = new mongoose.Schema({
         }
     ],
     url_imagen: { type: String, required: false },
-    explicacion_correcta: { type: String, required: true }
+    explicacion_correcta: { type: String, required: false }
 });
 
 export default preguntaSchema;
