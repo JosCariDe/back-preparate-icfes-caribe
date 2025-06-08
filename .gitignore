@@ -10,3 +10,5 @@ tmp/
 .idea/
 build/
 dist/
+
+.env
