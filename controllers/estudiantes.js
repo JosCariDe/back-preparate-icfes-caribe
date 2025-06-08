@@ -29,7 +29,7 @@ class estudianteController {
     async delete(req, res) {
         try {
             const data = await estudiantesModel.delete(req.body);
-            res.status(201).json({
+            res.status(200).json({
                 message: 'Estudiante Eliminado Exitosamente', 
                 data: data  
             });
@@ -42,7 +42,7 @@ class estudianteController {
     async getAll(req, res) {
         try {
             const data = await estudiantesModel.getAll(req.body);
-            res.status(201).json({message: 'Estudiantes Encontrados Exitosamente', data: data});
+            res.status(200).json({message: 'Estudiantes Encontrados Exitosamente', data: data});
         }catch (e) {
             console.log('Error al buscar estudiante: ', e);
             res.status(500).send({message:'Error interno Del servidor al buscar TODOS los estudiante', error: e});
@@ -52,7 +52,7 @@ class estudianteController {
     async getOne(req, res) {
         try {
             const data = await estudiantesModel.getOne(req.body);
-            res.status(201).json({message: 'Estudiante Encontrado Exitosamente', data: data});
+            res.status(200).json({message: 'Estudiante Encontrado Exitosamente', data: data});
         }catch (e) {
             console.log('Error al buscar estudiante: ', e);
             res.status(500).send({message:'Error interno Del servidor al buscar estudiante', error: e});

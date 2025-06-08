@@ -4,8 +4,16 @@ import routesEstudiantes from './routes/estudiante.js';
 import authRoutes from './routes/auth.js'; // Importar las rutas de autenticación
 import bodyParser from 'body-parser';
 import dbClient from './config/dbClient.js';
+import cors from 'cors'; // Importar el paquete cors
 
 const app = express();
+
+// Configuración de CORS
+app.use(cors({
+  origin: '*', // Permite cualquier origen (¡NO RECOMENDADO PARA PRODUCCIÓN!)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
