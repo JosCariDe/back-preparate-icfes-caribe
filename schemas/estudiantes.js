@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 
 // Esquema para Simulacro
 const simulacroSchema = new mongoose.Schema({
-    estado: { type: String, required: false, enum: ['completado', 'pendiente', 'en progreso'] }
+    estado: { type: String, required: false, enum: ['completado', 'pendiente', 'en progreso'] },
+    lista_id_preguntas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pregunta' }],
+    lista_opciones_correctas: [{ type: String }],
+    lista_opciones_escogidas: [{ type: String }],
 }); // Mongoose creará automáticamente un _id
 
 // Esquema para Foro
