@@ -2,6 +2,14 @@ import mongoose from 'mongoose';
 
 // Esquema para Simulacro
 const simulacroSchema = new mongoose.Schema({
+    titulo: {type: String, required: true},
+    area: {type: String, required: true, enum: [
+            'Lectura Crítica', 
+            'Matemáticas', 
+            'Ciencias Naturales', 
+            'Ciencias Sociales y Ciudadanas', 
+            'Inglés'
+        ] },
     estado: { type: String, required: false, enum: ['completado', 'pendiente', 'en progreso'] },
     lista_id_preguntas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pregunta' }],
     lista_opciones_correctas: [{ type: String }],
